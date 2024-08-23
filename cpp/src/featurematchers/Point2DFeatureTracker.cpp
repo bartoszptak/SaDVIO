@@ -4,6 +4,8 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/video.hpp>
 
+#include <iostream>
+
 namespace isae {
 
 uint Point2DFeatureTracker::track(std::shared_ptr<isae::ImageSensor> &sensor1,
@@ -49,9 +51,25 @@ uint Point2DFeatureTracker::track(std::shared_ptr<isae::ImageSensor> &sensor1,
                              _termCrit,
                              (cv::OPTFLOW_USE_INITIAL_FLOW + cv::OPTFLOW_LK_GET_MIN_EIGENVALS));
 
-    // Refine the pixels
-    cv::TermCriteria criteria = cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::MAX_ITER, 30, 0.01);
-    cv::cornerSubPix(sensor2->getRawData(), pts2, cv::Size(3, 3), cv::Size(-1, -1), criteria);
+    // filter out points that are outside the image
+
+    // for (size_t i = 0; i < status.size(); i++) {
+    //     if (status.at(i) == 0 || err.at(i) > max_err) {
+    //         pts1.erase(pts1.begin() + i);
+    //         pts2.erase(pts2.begin() + i);
+    //         pts1b.erase(pts1b.begin() + i);
+    //         status.erase(status.begin() + i);
+    //         err.erase(err.begin() + i);
+    //         statusb.erase(statusb.begin() + i);
+    //         errb.erase(errb.begin() + i);
+    //         i--;
+    //     }
+    // }
+
+
+    // // Refine the pixels
+    // cv::TermCriteria criteria = cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::MAX_ITER, 30, 0.01);
+    // cv::cornerSubPix(sensor2->getRawData(), pts2, cv::Size(3, 3), cv::Size(-1, -1), criteria);
 
     if (backward) {
         // Process the other way: sensor2->sensor1

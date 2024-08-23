@@ -3,11 +3,11 @@
 #################################################################################
 
 ## dataset_id in {kitti, eth, gazebo_fisheye, gazebo_pinhole, oivio, isae}
-dataset_id : "eth"
+dataset_id : "lunarsim"
 
 ## slam mode in {mono, bimono, nofov, monovio, bimonovio}
 slam_mode : "bimonovio"
-enable_visu : 1
+enable_visu : 0
 multithreading : 0
 
 ## contrast enhancer parameters (0: nothing, 1: clahe, 2: histogram equalization, 
