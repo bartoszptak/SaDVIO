@@ -117,7 +117,7 @@ bool AOptimizer::landmarkOptimization(std::shared_ptr<Frame> &frame) {
     options.max_num_iterations                 = 10;
     options.minimizer_progress_to_stdout       = false;
     options.use_explicit_schur_complement      = true;
-    options.function_tolerance                 = 1e-3;
+    options.function_tolerance                 = 1e-5;
     options.sparse_linear_algebra_library_type = ceres::SUITE_SPARSE;
     options.num_threads                        = 4;
     ceres::Solver::Summary summary;
