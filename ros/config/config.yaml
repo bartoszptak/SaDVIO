@@ -114,8 +114,8 @@ features_handled:
     tracker_max_err: 30
     matcher_label: "Point2DFeatureMatcher"
     max_matching_dist: 32
-    matcher_width: 32
-    matcher_height: 32
+    matcher_width: 24
+    matcher_height: 24
     lmk_triangulator: "Point3DLandmarkInitializer"
 
   # - label_feature: "pointxd"
